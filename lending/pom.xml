@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>bounded-contexts</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>lending</artifactId>
+    <packaging>pom</packaging>
+
+    <!-- The lending context: members, copies, loans, queues, fines, and the five things
+         Chapter 0 says the library does. These are Chapter 10's inner modules and its
+         in-memory adapters, moved under one directory and one package prefix,
+         library.lending, and not changed otherwise. The context has its own model of
+         a book, an ISBN and a title, which is all that a copy, a queue, and a sentence
+         need. None of the four modules lists a module of the catalogue context, so
+         nothing in here can name the catalogue's Book, its ISBN, or its authors. -->
+    <modules>
+        <module>model</module>
+        <module>domain</module>
+        <module>application</module>
+        <module>inmemory</module>
+    </modules>
+</project>

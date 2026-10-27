@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>bounded-contexts</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>presenters</artifactId>
+
+    <!-- Interface adapters: the presenters. Each one implements output boundaries of a
+         use-case circle and turns a response model into a view model, text for the
+         command line, the endpoint, and the window's status bar, rows of strings for
+         the window's tables and lists. This module is outside both contexts and lists
+         the use-case circle of each, because the same text presenter says "John
+         borrowed C1 of The Hobbit" and "Animal Farm by George Orwell is now in the
+         catalogue": the words of both contexts, in one class, on the outside. It
+         knows no JavaFX, no HTTP server, and no console. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>lending-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-application</artifactId>
+        </dependency>
+    </dependencies>
+</project>

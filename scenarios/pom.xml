@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>bounded-contexts</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>scenarios</artifactId>
+
+    <!-- A driving adapter: the scenario tests, in a module of their own as in Chapter 7.
+         Two test classes, one per context: the seventeen scenarios of Chapter 0, whose
+         configurator builds the lending context alone, and the catalogue scenarios of
+         Chapter 11, whose configurator builds both, because the last of them crosses
+         from one context to the other. They depend on each use-case circle for the
+         boundaries, the request models, and the output boundaries their own
+         presenter implements, on the lending model for one value, Money, and on
+         everything the configurators wire: the lending domain services and in-memory
+         adapters, the catalogue's in-memory adapter, the Anti-Corruption Layer, and
+         Babel. Not on the presenters: a test is a view that reads values, and it
+         brings its own. It has no main code. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>lending-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>lending-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>lending-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>lending-inmemory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-inmemory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-babel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>babel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

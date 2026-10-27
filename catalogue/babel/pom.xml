@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>catalogue</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>catalogue-babel</artifactId>
+
+    <!-- The Anti-Corruption Layer: a driven adapter of the catalogue context whose job
+         is translation. It implements the ISBN lookup port with Babel behind it, and
+         turns what Babel says, a record in Babel's shape with Babel's names, into a
+         Book of this context, and Babel's nothing into this context's nothing. It is
+         the one module in the project that lists both a context and the foreign
+         system: it sees the catalogue's model and ports, because it answers in their
+         terms, and it sees Babel, because it asks in Babel's. No module of the
+         catalogue lists Babel, so no model class, no use case, and no presenter can
+         name a BabelRecord; the compiler keeps the foreign model on this side of the
+         line. Its tests run the translation against Babel's own answers. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>babel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>bounded-contexts</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>desktop</artifactId>
+
+    <!-- A driving adapter: the JavaFX window, Martin's outermost circle and the controller
+         just inside it, in one module. It depends on the use-case circle of each
+         context for the input boundaries and the request models, on the presenters
+         for the two it shows, and on everything a configurator needs, because its
+         entry point is the configurator for this program: the lending context's
+         domain services and in-memory adapters, the catalogue's in-memory adapter,
+         the Anti-Corruption Layer, and Babel, which the configurator hands to the
+         layer. It does not depend on either model: no domain object of either
+         context reaches the screen, and no response model does either. It depends
+         on the HTTP endpoint because it starts that second driver inside this
+         program, next to the window. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>lending-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>presenters</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>lending-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>lending-inmemory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-inmemory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-babel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>babel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>library.desktop.MainWindow</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

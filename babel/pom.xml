@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>bounded-contexts</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>babel</artifactId>
+
+    <!-- The foreign system: an ISBN service that is not ours. This module stands in for
+         the vendor's client library; in a real system it would be a jar from their
+         repository and its one method would make an HTTP call. Here it answers from a
+         table, but its model is theirs: a record with the fields they chose, the
+         names they chose, an ISBN with no hyphens, authors surname first with a role
+         in brackets, and a null where they have nothing to say. Its package is not
+         library.anything, because the library did not write it. It depends on
+         nothing in the project, and nothing in the project depends on it but the
+         Anti-Corruption Layer and the configurators that hand it to one. It has no
+         tests, because one does not test the vendor's jar. -->
+</project>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>catalogue</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>catalogue-application</artifactId>
+
+    <!-- The use-case circle of the catalogue context: two use cases, each in a package
+         of its own with its boundaries and its models, as in Chapter 10. Beside them,
+         flat, what the circle declares for the outside to implement: the catalogue
+         itself, as a repository; the ISBN lookup, a port that takes an ISBN and
+         answers with a Book of this context or nothing, and says no word about who
+         answers; the change signal; and the refusal. It depends on the catalogue's
+         model and on nothing else. Its tests answer the two ports with fakes, so no
+         test here knows that Babel exists. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

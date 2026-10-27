@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>catalogue</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>catalogue-model</artifactId>
+
+    <!-- The centre of the catalogue context: its model of a book, the ISBN as a value
+         with a check digit, and the exception the model throws when it refuses. It
+         depends on nothing in the project and on no library, and in particular not on
+         the lending context's model: the two Books are two classes in two modules
+         that cannot see each other, which is what a bounded context is in Maven's
+         terms. JUnit is here in test scope only. -->
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

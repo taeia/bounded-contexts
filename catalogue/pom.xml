@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>bounded-contexts</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>catalogue</artifactId>
+    <packaging>pom</packaging>
+
+    <!-- The catalogue context: the books the library knows, each with an ISBN, a title,
+         and its authors, and the two things the catalogue does, add a book by its ISBN
+         and search. It is built the way Chapter 10 built lending, with use cases
+         behind input and output boundaries, in two inner modules rather than three:
+         no rule of the catalogue crosses aggregates, so there is no ring of domain
+         services between the model and the use cases. Beside the inner modules, its
+         two driven adapters: the in-memory storage, and the Anti-Corruption Layer that
+         asks Babel about an ISBN and answers in the catalogue's own terms. None of the
+         four modules lists a module of the lending context. -->
+    <modules>
+        <module>model</module>
+        <module>application</module>
+        <module>inmemory</module>
+        <module>babel</module>
+    </modules>
+</project>

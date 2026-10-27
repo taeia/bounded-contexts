@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>catalogue</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>catalogue-inmemory</artifactId>
+
+    <!-- A driven adapter of the catalogue context: the catalogue kept in a list, and the
+         starting catalogue of Chapter 0's three books with their authors. It sees the
+         model, because it stores Books, and the use-case circle, because the
+         repository interface is declared there. It has nothing to do with the
+         lending context's in-memory adapters, which keep the copies: the two
+         starting states are loaded one after the other by a configurator, and that
+         is the only place the two are named together. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>catalogue-application</artifactId>
+        </dependency>
+    </dependencies>
+</project>
